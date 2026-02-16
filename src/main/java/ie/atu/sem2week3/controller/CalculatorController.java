@@ -23,11 +23,24 @@ public class CalculatorController {
 
     @GetMapping("/div")
     public ResponseEntity<?> div(@RequestParam int a, @RequestParam int b) {
-        if (b==0)
+        if (b ==0 )
         {
             return ResponseEntity.badRequest().body("Division by zero is no allowed ");
         }
         int result = calculatorService.div(a, b);
         return ResponseEntity.ok(result);
     }
-}
+
+    @GetMapping("/convert")
+    public ResponseEntity<String> convert (@RequestParam double value, @RequestParam String type ) {
+        switch () {
+            case "c2f": return ResponseEntity.ok(
+                    value + "C = " + calculatorService.c(value) + "F");
+            )
+        }
+    }
+
+
+
+
+    }
