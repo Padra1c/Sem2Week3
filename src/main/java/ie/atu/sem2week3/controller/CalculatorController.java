@@ -33,14 +33,10 @@ public class CalculatorController {
 
     @GetMapping("/convert")
     public ResponseEntity<String> convert (@RequestParam double value, @RequestParam String type ) {
-        switch () {
-            case "c2f": return ResponseEntity.ok(
-                    value + "C = " + calculatorService.c(value) + "F");
-            )
+        switch (type.toLowerCase()) {
+            case "c2f": return ResponseEntity.ok(value + "C = " + calculatorService.c2f(value) + "F");
+            case "f2c": return ResponseEntity.ok(value + "F" + calculatorService.f2c(value) + " C");
+            default: return ResponseEntity.badRequest().body("Unknown Conversion type. Use c2f or f2c.");
         }
     }
-
-
-
-
-    }
+}
